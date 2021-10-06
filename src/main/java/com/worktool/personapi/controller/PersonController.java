@@ -1,12 +1,13 @@
 package com.worktool.personapi.controller;
 
-import com.worktool.personapi.dto.MessageResponseDTO;
-import com.worktool.personapi.entity.Person;
-import com.worktool.personapi.repository.PersonRepository;
+import com.worktool.personapi.dto.request.PersonDTO;
+import com.worktool.personapi.dto.response.MessageResponseDTO;
 import com.worktool.personapi.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 @RestController
 @RequestMapping("/api/v1/people")
@@ -22,7 +23,7 @@ public class PersonController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public MessageResponseDTO createPerson(@RequestBody Person person) {
-        return personService.createPerson(person);
+    public MessageResponseDTO createPerson(@RequestBody @Valid PersonDTO personDTO) {
+        return personService.createPerson(personDTO);
     }
 }

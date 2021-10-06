@@ -1,4 +1,4 @@
-package com.worktool.personapi.dto;
+package com.worktool.personapi.dto.response;
 
 import lombok.Builder;
 import lombok.Data;
